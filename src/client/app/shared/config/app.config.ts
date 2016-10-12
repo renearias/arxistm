@@ -57,8 +57,8 @@ export class AppConfig {
     }
   };
 
-  _resizeCallbacks = [];
-  _screenSizeCallbacks = {
+  _resizeCallbacks: any = [];
+  _screenSizeCallbacks: any = {
     xs: {enter: [], exit: []},
     sm: {enter: [], exit: []},
     md: {enter: [], exit: []},
@@ -66,10 +66,10 @@ export class AppConfig {
     xl: {enter: [], exit: []}
   };
 
-  isScreen(size): boolean {
+  isScreen(size: any): boolean {
     let screenPx = window.innerWidth;
-    return (screenPx >= this.config.settings.screens[size + '-min'] || size === 'xs')
-      && (screenPx <= this.config.settings.screens[size + '-max'] || size === 'xl');
+    return ((screenPx >= this.config.settings.screens[size + '-min'] || size === 'xs')
+      && (screenPx <= this.config.settings.screens[size + '-max'] || size === 'xl'));
   }
 
   getScreenSize(): string {
@@ -84,7 +84,7 @@ export class AppConfig {
     if (screenPx >= this.config.settings.screens['xl-min']) { return 'xl'; }
   }
 
-  onScreenSize(size, fn, /* Boolean= */ onEnter): void {
+  onScreenSize(size: any, fn: any, /* Boolean= */ onEnter: any): void {
     onEnter = typeof onEnter !== 'undefined' ? onEnter : true;
     if (typeof size === 'object') {
       for (let i = 0; i < size.length; i++) {
@@ -96,8 +96,8 @@ export class AppConfig {
 
   }
 
-  changeColor(color, ratio, darker): string {
-    let pad = function (num, totalChars): number {
+  changeColor(color: any, ratio: any, darker: any): string {
+    let pad = function (num: any, totalChars: any): number {
       let padVal = '0';
       num = num + '';
       while (num.length < totalChars) {
@@ -168,19 +168,19 @@ export class AppConfig {
       ].join('');
   }
 
-  lightenColor(color, ratio): any {
+  lightenColor(color: any, ratio: any): any {
     return this.changeColor(color, ratio, false);
   }
 
-  darkenColor(color, ratio): any {
+  darkenColor(color: any, ratio: any): any {
     return this.changeColor(color, ratio, true);
   }
 
-  max(array): any {
+  max(array: any): any {
     return Math.max.apply(null, array);
   }
 
-  min(array): any {
+  min(array: any): any {
     return Math.min.apply(null, array);
   }
 

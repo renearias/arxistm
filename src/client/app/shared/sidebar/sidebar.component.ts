@@ -38,8 +38,8 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  changeActiveNavigationItem(location): void {
-    let $newActiveLink = this.$el.find('a[href="#' + location.path() + '"]');
+  changeActiveNavigationItem(location: any): void {
+   /* let $newActiveLink = this.$el.find('a[href="#' + location.path() + '"]');
 
     // collapse .collapse only if new and old active links belong to different .collapse
     if (!$newActiveLink.is('.active > .collapse > li > a')) {
@@ -52,7 +52,7 @@ export class SidebarComponent implements OnInit {
 
     // uncollapse parent
     $newActiveLink.closest('.collapse').addClass('in')
-      .siblings('a[data-toggle=collapse]').removeClass('collapsed');
+      .siblings('a[data-toggle=collapse]').removeClass('collapsed');*/
   }
 
   ngAfterViewInit(): void {
