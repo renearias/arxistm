@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <base href="<%= APP_BASE %>">
@@ -18,6 +18,19 @@
   // Fixes undefined module function in SystemJS bundle
   function module() {}
   </script>
+
+  <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDl-A1af2TTgOPTwlEtHDZzZAdFkKrX8vk",
+        authDomain: "arxistm-43156.firebaseapp.com",
+        databaseURL: "https://arxistm-43156.firebaseio.com",
+        storageBucket: "arxistm-43156.appspot.com",
+        messagingSenderId: "490253814290"
+      };
+      firebase.initializeApp(config);
+    </script>
 
   <!-- shims:js -->
   <!-- endinject -->
