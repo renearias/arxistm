@@ -8,7 +8,7 @@ declare let jQuery: any;
 
 @Component({
   moduleId: module.id,
-  selector: ['sidebar'],
+  selector: 'sidebar',
   templateUrl: 'sidebar.template.html'
 })
 
