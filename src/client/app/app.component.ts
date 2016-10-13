@@ -4,10 +4,8 @@ import { Config } from './shared/index';
 import { AppConfig } from './shared/config/app.config';
 import './operators';
 
-import 'hammerjs';
 declare var jQuery: any;
 declare var Hammer: any;
-declare var Tether: any;
 
 /**
  * This class represents the main application component. Within the @Routes annotation is the configuration of the
@@ -81,7 +79,7 @@ export class AppComponent {
     if (this.isNavigationStatic()
       && (this.configFn.isScreen('lg') || this.configFn.isScreen('xl'))) { return; }
 
-    jQuery('layout').removeClass('nav-collapsed');
+    jQuery('sd-app').removeClass('nav-collapsed');
     this.$sidebar.find('.active .active').closest('.collapse').collapse('show')
       .siblings('[data-toggle=collapse]').removeClass('collapsed');
   }
@@ -91,7 +89,7 @@ export class AppComponent {
     if (this.isNavigationStatic()
       && (this.configFn.isScreen('lg') || this.configFn.isScreen('xl'))) { return; }
 
-    jQuery('layout').addClass('nav-collapsed');
+    jQuery('sd-app').addClass('nav-collapsed');
     this.$sidebar.find('.collapse.in').collapse('hide')
       .siblings('[data-toggle=collapse]').addClass('collapsed');
   }
@@ -121,7 +119,7 @@ export class AppComponent {
   }
 
   toggleNavigationCollapseState(): void {
-    if (jQuery('layout').is('.nav-collapsed')) {
+    if (jQuery('sd-app').is('.nav-collapsed')) {
       this.expandNavigation();
     } else {
       this.collapseNavigation();
@@ -147,7 +145,7 @@ export class AppComponent {
       setTimeout(() => {
         if (d.configFn.isScreen('md')) { return; }
 
-        if (!jQuery('layout').is('.nav-collapsed')) {
+        if (!jQuery('sd-app').is('.nav-collapsed')) {
           d.collapseNavigation();
         }
       });
@@ -156,9 +154,9 @@ export class AppComponent {
     swipe.on('swiperight', () => {
       if (d.configFn.isScreen('md')) { return; }
 
-      if (jQuery('layout').is('.chat-sidebar-opened')) { return; }
+      if (jQuery('sd-app').is('.chat-sidebar-opened')) { return; }
 
-      if (jQuery('layout').is('.nav-collapsed')) {
+      if (jQuery('sd-app').is('.nav-collapsed')) {
         d.expandNavigation();
       }
     });
@@ -191,7 +189,7 @@ export class AppComponent {
     this.checkNavigationState();
 
     this.$sidebar.on('click', () => {
-      if (jQuery('layout').is('.nav-collapsed')) {
+      if (jQuery('sd-app').is('.nav-collapsed')) {
         this.expandNavigation();
       }
     });

@@ -46,7 +46,7 @@ export class ChatSidebarComponent implements OnInit {
   }
 
   enableSwipeCollapsing(): void {
-    let $chatContainer = jQuery('layout');
+    let $chatContainer = jQuery('sd-app');
     let chatSidebarSwipe = new Hammer(document.getElementById('content-wrap'));
 
     chatSidebarSwipe.on('swipeleft', () => {
@@ -65,7 +65,7 @@ export class ChatSidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    jQuery('layout').addClass('chat-sidebar-container');
+    jQuery('sd-app').addClass('chat-sidebar-container');
 
     if ('ontouchstart' in window) {
       this.enableSwipeCollapsing();
