@@ -369,6 +369,8 @@ export class SeedConfig {
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
       'moment': 'node_modules/moment/moment.js',
       'ng2-bootstrap/ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
+      'firebase': 'node_modules/firebase/firebase.js',
+      'angularfire2': 'node_modules/angularfire2',
       'app/*': '/app/*',
       // For test config
       'dist/dev/*': '/base/dist/dev/*',
