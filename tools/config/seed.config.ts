@@ -367,7 +367,8 @@ export class SeedConfig {
       '@angular/platform-browser-dynamic/testing':
         'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
-
+      'moment': 'node_modules/moment/moment.js',
+      'ng2-bootstrap/ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
       'app/*': '/app/*',
       // For test config
       'dist/dev/*': '/base/dist/dev/*',
