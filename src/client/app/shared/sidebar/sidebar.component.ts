@@ -9,7 +9,7 @@ declare let jQuery: any;
 @Component({
   moduleId: module.id,
   selector: 'sidebar',
-  templateUrl: 'sidebar.template.html'
+  templateUrl: 'sidebar.component.html'
 })
 
 export class SidebarComponent implements OnInit {

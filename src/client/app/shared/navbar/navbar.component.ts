@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     this.config = config.getConfig();
   }
 
-  toggleSidebar(state): void {
+  toggleSidebar(state: any): void {
     this.toggleSidebarEvent.emit(state);
   }
 
@@ -48,7 +48,7 @@ export class NavbarComponent implements OnInit {
         .append('<i class="chat-notification-sing animated bounceIn"></i>');
     }, 4000);
 
-    this.$el.find('.input-group-addon + .form-control').on('blur focus', function(e): void {
+    this.$el.find('.input-group-addon + .form-control').on('blur focus', function(e: any): void {
       jQuery(this).parents('.input-group')
         [e.type === 'focus' ? 'addClass' : 'removeClass']('focus');
     });

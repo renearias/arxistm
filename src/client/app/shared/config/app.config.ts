@@ -66,11 +66,11 @@ export class AppConfig {
     xl: {enter: [], exit: []}
   };
 
-  isScreen(size: any): boolean {
+  isScreen(size: string): boolean {
     let screenPx = window.innerWidth;
     return ((screenPx >= this.config.settings.screens[size + '-min'] || size === 'xs')
       && (screenPx <= this.config.settings.screens[size + '-max'] || size === 'xl'));
-  }
+   }
 
   getScreenSize(): string {
     let screenPx = window.innerWidth;
@@ -82,6 +82,7 @@ export class AppConfig {
     if ((screenPx >= this.config.settings.screens['lg-min'])
       && (screenPx <= this.config.settings.screens['lg-max'])) { return 'lg'; }
     if (screenPx >= this.config.settings.screens['xl-min']) { return 'xl'; }
+    return null;
   }
 
   onScreenSize(size: any, fn: any, /* Boolean= */ onEnter: any): void {
@@ -185,7 +186,7 @@ export class AppConfig {
   }
 
   _initResizeEvent(): void {
-    let resizeTimeout;
+    let resizeTimeout: any;
 
     jQuery(window).on('resize', () => {
       clearTimeout(resizeTimeout);
@@ -196,7 +197,7 @@ export class AppConfig {
   }
 
   _initOnScreenSizeCallbacks(): void  {
-    let resizeTimeout,
+    let resizeTimeout: any,
       prevSize = this.getScreenSize();
 
     jQuery(window).resize(() => {
@@ -205,11 +206,11 @@ export class AppConfig {
         let size = this.getScreenSize();
         if (size !== prevSize) { // run only if something changed
           // run exit callbacks first
-          this._screenSizeCallbacks[prevSize].exit.forEach((fn) => {
+          this._screenSizeCallbacks[prevSize].exit.forEach((fn: any) => {
             fn(size, prevSize);
           });
           // run enter callbacks then
-          this._screenSizeCallbacks[size].enter.forEach((fn) => {
+          this._screenSizeCallbacks[size].enter.forEach((fn: any) => {
             fn(size, prevSize);
           });
           console.log('screen changed. new: ' + size + ', old: ' + prevSize);
