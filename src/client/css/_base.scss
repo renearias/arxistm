@@ -10,7 +10,7 @@ app, .app {
   color: $text-color;
 }
 
-.sidebar{
+.sidebar {
   position: fixed;
   z-index: 0;
   left: 0;
@@ -20,7 +20,7 @@ app, .app {
   background-color: $sidebar-bg-color;
   color: $sidebar-color;
 
-  .slimScrollBar{
+  .slimScrollBar {
     @include border-radius(0 !important);
     background-color: $sidebar-color !important;
   }
@@ -397,13 +397,13 @@ app, .app {
   > li > ul{
     /* simulate padding */
     &:before{
-      content: "";
+      content: '';
       display: block;
       padding-top: $line-height-computed/2;
     }
 
     &:after{
-      content: "";
+      content: '';
       display: block;
       padding-bottom: $line-height-computed/2;
     }
@@ -734,7 +734,7 @@ app, .app {
     &:before{
       right: 100%;
       top: 8px;
-      content: " ";
+      content: ' ';
       height: 0;
       width: 0;
       position: absolute;
