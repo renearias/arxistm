@@ -9,7 +9,7 @@ export class SearchPipe implements PipeTransform {
   transform(value: any, args? :any): Array<any> {
     let searchText = new RegExp(args, 'ig');
     if (value) {
-      return value.filter(conversation: any => {
+      return value.filter((conversation: any) => {
         if (conversation.name) {
           return conversation.name.search(searchText) !== -1 ||
             conversation.lastMessage.search( searchText) !== -1;
@@ -18,7 +18,9 @@ export class SearchPipe implements PipeTransform {
             return conversation.text.search(searchText) !== -1;
           }
         }
+        return null;
       });
     }
+    return [];
   }
 }

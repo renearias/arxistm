@@ -3,12 +3,11 @@ import { Router, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
 import { AppConfig } from '../config/app.config';
 
-require('jquery-slimscroll');
 declare let jQuery: any;
 
 @Component({
   moduleId: module.id,
-  selector: 'sidebar',
+  selector: '[sidebar]',
   templateUrl: 'sidebar.component.html'
 })
 
@@ -39,8 +38,10 @@ export class SidebarComponent implements OnInit {
   }
 
   changeActiveNavigationItem(location: any): void {
-   /* let $newActiveLink = this.$el.find('a[href="#' + location.path() + '"]');
-
+      
+   let path = location.path()?location.path():'/';
+   let $newActiveLink = this.$el.find('a[href="' + path + '"]');
+   
     // collapse .collapse only if new and old active links belong to different .collapse
     if (!$newActiveLink.is('.active > .collapse > li > a')) {
       this.$el.find('.active .active').closest('.collapse').collapse('hide');
@@ -52,7 +53,7 @@ export class SidebarComponent implements OnInit {
 
     // uncollapse parent
     $newActiveLink.closest('.collapse').addClass('in')
-      .siblings('a[data-toggle=collapse]').removeClass('collapsed');*/
+      .siblings('a[data-toggle=collapse]').removeClass('collapsed');
   }
 
   ngAfterViewInit(): void {

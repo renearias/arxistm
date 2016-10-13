@@ -2,10 +2,10 @@ import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
     moduleId: module.id,
-    selector: 'chat-message',
+    selector: '[chat-message]',
     templateUrl: 'chat-message.component.html'
 })
-export class ChatMessage {
+export class ChatMessageComponent {
   @Input() conversation: any;
   @Input() open: boolean;
   @Input() searchMessage: string;

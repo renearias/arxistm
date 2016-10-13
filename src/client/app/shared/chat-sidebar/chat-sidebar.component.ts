@@ -5,10 +5,10 @@ declare var Hammer: any;
 
 @Component({
     moduleId: module.id,
-    selector: 'chat-sidebar',
+    selector: '[chat-sidebar]',
     templateUrl: 'chat-sidebar.component.html'
 })
-export class ChatSidebar implements OnInit {
+export class ChatSidebarComponent implements OnInit {
   conversations: ChatService;
   newMessage: string = '';
   activeConversation: any;

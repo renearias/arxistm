@@ -8,7 +8,7 @@ declare var jQuery: any;
 
 @Component({
   moduleId: module.id,
-  selector: 'navbar',
+  selector: '[navbar]',
   templateUrl: 'navbar.component.html'
 })
 export class NavbarComponent implements OnInit {
