@@ -20,9 +20,10 @@
       "../../node_modules"
     ],
     "types": [
+      "firebase",
+      "angularfire2",
       "core-js",
       "express",
-      "firebase",
       "jasmine",
       "node",
       "protractor",
