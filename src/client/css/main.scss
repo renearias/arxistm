@@ -1,4 +1,26 @@
-//    Created on : 12-oct-2016, 15:18:16
-//    Author     : Rene Arias <renearias@arxis.la>
+@import 'variables';
+@import 'mixins';
 
-@import 'application';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+@import '../../../node_modules/font-awesome/scss/font-awesome';
+@import '../../../node_modules/glyphicons-halflings/scss/glyphicons-halflings';
+
+@import '../../../node_modules/pace/themes/pace-theme-flash.css';
+@import '../../../node_modules/animate.css/animate.min.css';
+@import '../../../node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.scss';
+
+@import 'bootstrap-override';
+@import 'libs-override';
+
+//
+
+
+//end custom libs
+
+//everything below this line is required for essential styling
+@import 'font';
+@import 'general';
+@import 'global-transitions';
+@import 'base';
+@import 'utils';

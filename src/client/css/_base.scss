@@ -21,7 +21,7 @@ app, .app {
   color: $sidebar-color;
 
   .slimScrollBar {
-    @include border-radius(0 !important);
+    //@include border-radius(0 !important);
     background-color: $sidebar-color !important;
   }
 }
