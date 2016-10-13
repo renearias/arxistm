@@ -29,8 +29,6 @@ export class HomeComponent implements OnInit {
   constructor(public nameListService: NameListService, af: AngularFire) {
         
         this.item = af.database.object('/users');
-        console.log(this.item);
-        console.log(this.item.$value);
   }
 
   /**
