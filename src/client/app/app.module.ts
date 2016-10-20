@@ -12,6 +12,8 @@ import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 
+import * as firebase from 'firebase';
+//declare var firebase: any;
 // Must export the config
 export const firebaseConfig = {
   apiKey: 'AIzaSyDl-A1af2TTgOPTwlEtHDZzZAdFkKrX8vk',
