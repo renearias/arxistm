@@ -36,9 +36,9 @@
  */
 .circle, .rounded, .circle-o {
   display: inline-block;
-  width: # {$line-height-base}em;
-  height: # {$line-height-base}em;
-  line-height: # {$line-height-base}em;
+  width: #{$line-height-base}em;
+  height: #{$line-height-base}em;
+  line-height: #{$line-height-base}em;
   text-align: center;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .circle-o {
-  border: # {$line-height-base/5}em solid transparent;
+  border: #{$line-height-base/5}em solid transparent;
 
   &.circle-o-danger { border-color: $brand-danger };
   &.circle-o-warning { border-color: $brand-warning };
@@ -285,7 +285,7 @@ $font-sizes: 54px, $font-size-h1, $font-size-h2, $font-size-h3, $font-size-h4, $
 $i: 0;
 @each $font-size in $font-sizes {
 
-  .value# {$i} {
+  .value#{$i} {
     margin: 0;
     font-size: $font-size;
     font-weight: $font-weight-semi-bold;

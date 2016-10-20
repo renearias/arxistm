@@ -67,7 +67,7 @@
 // Common thumbnail properties
 // -------------------------
 @mixin thumb($parent, $size) {
-  # {$parent} {
+  #{$parent} {
     width: $size;
 
     > .glyphicon,
@@ -87,28 +87,28 @@
 @mixin property-variants($base, $property, $variants: ()) {
   @each $size, $value in $variants {
     @if ($size == 'md') {
-      # {$base} {
-        # {$property}: $value;
+      #{$base} {
+        #{$property}: $value;
       }
-      # {$base}-n {
-        # {$property}: $value;
+      #{$base}-n {
+        #{$property}: $value;
       }
     }
-   // # {$base}-# {$size} {
-    //  # {$property}: $value;
+   // #{$base}-#{$size} {
+    //  #{$property}: $value;
     //}
-    # {$base}-n-# {$size} {
-      # {$property}: -$value;
+    #{$base}-n-#{$size} {
+      #{$property}: -$value;
     }
   }
 }
 
 @mixin keyframes($name) {
-  @-webkit-keyframes # {$name} {
+  @-webkit-keyframes #{$name} {
     @content;
   }
 
-  @keyframes # {$name} {
+  @keyframes #{$name} {
     @content;
   }
 }

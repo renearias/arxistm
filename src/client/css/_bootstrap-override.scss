@@ -463,7 +463,7 @@ legend {
         }
     }
 
-    margin-left: calc(# {$navbar-padding-x} + 10px);
+    margin-left: calc(#{$navbar-padding-x} + 10px);
     margin-right: $navbar-padding-x;
 
     @include media-breakpoint-down(sm) {
@@ -1007,7 +1007,7 @@ legend {
 
 
 @mixin bg-variant($parent, $color) {
-    # {
+    #{
         $parent
     }
 
@@ -1016,7 +1016,7 @@ legend {
     color: $gray !important;
 }
 
-a# {
+a#{
     $parent
 }
 

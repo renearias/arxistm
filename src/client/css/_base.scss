@@ -56,23 +56,11 @@ app,
         }
 
         .circle {
-            height: # {
-                $line-height-base
-            }
+            height: #{$line-height-base}rem;
 
-            rem;
+            line-height: #{$line-height-base}rem;
 
-            line-height: # {
-                $line-height-base
-            }
-
-            rem;
-
-            width: # {
-                $line-height-base
-            }
-
-            rem;
+            width: #{$line-height-base}rem;
         }
     }
 }
@@ -468,12 +456,12 @@ app,
     }
 
     .dropdown-menu {
+        color: $text-color;
         position: fixed;
         top: 57px;
         left: 0;
         margin: 0 20px;
         width: 320px;
-        color: $text-color;
 
         @media (max-width: 380px) {
             margin: 0;
@@ -946,7 +934,7 @@ app,
 }
 
 .page-title {
-    margin: 0 0 calc(# {$line-height-computed} + 6px);
+    margin: 0 0 calc(#{$line-height-computed} + 6px);
 }
 
 .notifications {
