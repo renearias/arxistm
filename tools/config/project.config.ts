@@ -38,8 +38,8 @@ export class ProjectConfig extends SeedConfig {
 
     this.SYSTEM_CONFIG_DEV.paths['firebase'] =
       `${this.APP_BASE}node_modules/firebase/firebase`;
-    this.SYSTEM_CONFIG_DEV.paths['angularfire2'] =
-      `${this.APP_BASE}node_modules/angularfire2/angularfire2`;  
+    /*this.SYSTEM_CONFIG_DEV.paths['angularfire2'] =
+      `${this.APP_BASE}node_modules/angularfire2/angularfire2`;*/
 
     this.SYSTEM_BUILDER_CONFIG.packages['firebase'] = {
         main: 'firebase.js',
