@@ -22,7 +22,7 @@
     ],
     "types": [
       "firebase",
-      "angularfire2",
+     // "angularfire2",
       "core-js",
       "express",
       "jasmine",
