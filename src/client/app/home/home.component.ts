@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/index';
+import {Observable} from 'rxjs/Observable';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 /**
@@ -15,7 +16,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class HomeComponent implements OnInit {
 
   items: FirebaseListObservable<any[]>;
-  item: FirebaseObjectObservable<any[]>;
+  item: FirebaseObjectObservable<any>;
   newName: string = '';
   errorMessage: string;
   names: any[] = [];
@@ -30,7 +31,15 @@ export class HomeComponent implements OnInit {
         
         this.item = af.database.object('/users');
   }
-
+  resultado() {
+      //return this.item.value+5;
+      let result: any;
+     this.item.subscribe(snapshot => {
+         result = snapshot.$value + 5; 
+      });
+     return result;
+     
+  }
   /**
    * Get the names OnInit
    */
