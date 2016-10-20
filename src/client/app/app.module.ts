@@ -1,3 +1,4 @@
+import * as firebase from 'firebase';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_BASE_HREF } from '@angular/common';
@@ -12,8 +13,6 @@ import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 
-import * as firebase from 'firebase';
-//declare var firebase: any;
 // Must export the config
 export const firebaseConfig = {
   apiKey: 'AIzaSyDl-A1af2TTgOPTwlEtHDZzZAdFkKrX8vk',
