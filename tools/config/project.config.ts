@@ -25,7 +25,7 @@ export class ProjectConfig extends SeedConfig {
       {src: 'tether/dist/js/tether.min.js', inject: 'libs'},
       {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
       {src: 'hammerjs/hammer.min.js', inject: 'libs'},
-      
+
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];
 
@@ -35,7 +35,7 @@ export class ProjectConfig extends SeedConfig {
       // {src: `${this.APP_SRC}/your-path-to-lib/libs/jquery-ui.js`, inject: true, vendor: false}
       // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
     ];
-    
+
     this.SYSTEM_CONFIG_DEV.paths['firebase'] =
       `${this.APP_BASE}node_modules/firebase/firebase`;
 
