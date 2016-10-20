@@ -68,8 +68,8 @@ export class AppConfig {
 
   isScreen(size: string): boolean {
     let screenPx = window.innerWidth;
-    return ((screenPx >= this.config.settings.screens[size + '-min'] || size === 'xs')
-      && (screenPx <= this.config.settings.screens[size + '-max'] || size === 'xl'));
+    return ((screenPx >= this.config.settings.screens[`${size}-min`] || size === 'xs')
+      && (screenPx <= this.config.settings.screens[`${size}-max`] || size === 'xl'));
    }
 
   getScreenSize(): string {
