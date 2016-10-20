@@ -2,7 +2,7 @@
  * Font Awesome 2x spin
  */
 
-.# {$fa-css-prefix}-spin-fast  {
+.# {$fa-css-prefix}-spin-fast {
   -webkit-animation: fa-spin 1s infinite linear;
   -moz-animation: fa-spin 1s infinite linear;
   -o-animation: fa-spin 1s infinite linear;
@@ -10,7 +10,7 @@
 }
 
 
-.fa-lg  {
+.fa-lg {
   vertical-align: -15%;
 }
 
@@ -54,10 +54,10 @@
 /*glyphicons-halflings */
 /***********************/
 
-.glyphicon-comment:before  {
+.glyphicon-comment:before {
   content:"\E111";
 }
 
-.glyphicon-chevron-up  {
+.glyphicon-chevron-up {
   top: 2px;
 }
