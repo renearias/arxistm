@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NameListService } from '../shared/index';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -14,7 +14,6 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 
 export class HomeComponent implements OnInit {
 
-  items: FirebaseListObservable<any[]>;
   item: FirebaseObjectObservable<any>;
   newName: string = '';
   errorMessage: string;
@@ -30,15 +29,15 @@ export class HomeComponent implements OnInit {
         
         this.item = af.database.object('/users');
   }
-  /*resultado() {
+  resultado() {
       //return this.item.value+5;
       let result: any;
-     this.item.subscribe(snapshot => {
+     this.item.subscribe((snapshot:any) => {
          result = snapshot.$value + 5; 
       });
      return result;
      
-  }*/
+  }
   /**
    * Get the names OnInit
    */

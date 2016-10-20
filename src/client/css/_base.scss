@@ -1,24 +1,26 @@
-/***********************/
-/*        Layout       */
-/***********************/
-app, .app {
-  height: 100%;
+//////////////////////////
+//        Layout       //
+////////////////////////
+app,
+.app {
   display: block;
+  height: 100%;
 }
 
-.chat-sidebar-container {
+.chat-sidebar-container
+{
   color: $text-color;
 }
 
 .sidebar {
-  position: fixed;
-  z-index: 0;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: $sidebar-width;
   background-color: $sidebar-bg-color;
+  bottom: 0;
   color: $sidebar-color;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: $sidebar-width;
+  z-index: 0;
 
   .slimScrollBar {
     //@include border-radius(0 !important);
