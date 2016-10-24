@@ -150,6 +150,8 @@
     "awesome-bootstrap-checkbox": "1.0.0-alpha.4",
     "bootstrap": "4.0.0-alpha.4",
     "core-js": "^2.4.1",
+    "datatables.net": "^1.10.12",
+    "datatables.net-bs": "^1.10.12",
     "es-module-loader": "^1.0.0",
     "firebase": "^3.4.0",
     "font-awesome": "4.6.3",
