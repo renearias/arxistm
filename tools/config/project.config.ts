@@ -21,10 +21,13 @@ export class ProjectConfig extends SeedConfig {
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
       {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
-      {src: 'jquery-slimscroll/jquery.slimscroll.min.js', inject: 'libs'},
       {src: 'tether/dist/js/tether.min.js', inject: 'libs'},
       {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
+      {src: 'jquery-slimscroll/jquery.slimscroll.min.js', inject: 'libs'},
       {src: 'hammerjs/hammer.min.js', inject: 'libs'},
+      {src: 'datatables.net/js/jquery.dataTables.js', inject: 'libs'},
+      {src: 'datatables.net-bs/js/dataTables.bootstrap.js', inject: 'libs'},
+      {src: 'datatables.net-bs/css/dataTables.bootstrap.css', inject: true},
 
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];
