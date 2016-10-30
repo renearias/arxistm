@@ -4,13 +4,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
   moduleId: module.id,
   selector: 'login',
   styleUrls: [ 'login.style.css' ],
-  templateUrl: 'login.template.html',
+  templateUrl: './login.component.html',
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'login-page app'
   }
 })
-export class Login {
+export class LoginComponent {
   constructor() {
 
   }
