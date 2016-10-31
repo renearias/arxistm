@@ -28,6 +28,7 @@ export class OAuth2Service {
   //lock = new Auth0Lock('YOUR_AUTH0_CLIENT_ID', 'YOUR_AUTH0_DOMAIN');
   refreshSubscription: any;
   user: Object;
+  currentToken: any;
   //zoneImpl: NgZone;
   loginApiUrl: string = Config.API+'oauth/v2/token';
   private loggedIn = false;
@@ -36,7 +37,7 @@ export class OAuth2Service {
    // this.zoneImpl = zone;
    // this.user = JSON.parse(localStorage.getItem('profile'));
     this.loggedIn = !!localStorage.getItem('id_token');
-    this.currentToken=JSON.parse(localStorage.getItem('id_token'));
+    this.currentToken = JSON.parse(localStorage.getItem('id_token'));
   }
 
   /*public authenticated() {
@@ -66,6 +67,26 @@ export class OAuth2Service {
                     })
                     .catch(this.handleLoginError);
   }
+  
+  public tryLoginWithFacebook(facebookToken: string) {
+
+        let bodyRequest = {
+          'client_id': Config.OAUTH_CLIENT_ID,
+          'client_secret': Config.OAUTH_CLIENT_SECRET,
+          'grant_type': 'https://facebook.com/',
+          'facebook_access_token': facebookToken
+      };
+      
+      return this.http.post(this.loginApiUrl,bodyRequest)
+                    .toPromise()   
+                    .then((res: Response) => {
+                        this.currentToken = res.json();
+                        this.loggedIn = true;
+                        localStorage.setItem('id_token', JSON.stringify(this.currentToken));
+                    })
+                    .catch(this.handleLoginError);
+  }
+  
   public logout() {
     localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
