@@ -2,6 +2,7 @@ import { Component, /*ViewEncapsulation,*/ ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Config } from './shared/index';
 import { AppConfig } from './shared/config/app.config';
+import { OAuth2Service } from './shared/oauth2/index';
 import './operators';
 
 declare var jQuery: any;
@@ -29,20 +30,24 @@ export class AppComponent {
   config: any;
   configFn: any;
   $sidebar: any;
-  el: ElementRef;
-  router: Router;
   chatOpened: boolean = false;
 
-  constructor(config: AppConfig,
-              el: ElementRef,
-              router: Router) {
+  constructor(config: AppConfig, private el: ElementRef, private router: Router, private oAuth2: OAuth2Service) {
     console.log('Environment config', Config);
-    this.el = el;
     this.config = config.getConfig();
     this.configFn = config;
-    this.router = router;
+   
   }
-
+  isLogin() : boolean {
+      if ( this.router.url === '/login') return true;
+       if (!this.oAuth2.hasValidAccessToken()){
+     
+        this.router.navigate(['/login']);
+        return false;
+    };
+    return this.router.url === '/login'
+  }
+  
   toggleSidebarListener(state: any): void {
     let toggleNavigation = state === 'static'
       ? this.toggleNavigationState
