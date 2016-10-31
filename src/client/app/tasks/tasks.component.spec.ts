@@ -4,10 +4,10 @@ import {
   TestBed
 } from '@angular/core/testing';
 
-import { TasksModule } from './about.module';
+import { TasksModule } from './tasks.module';
 
 export function main() {
-   describe('About component', () => {
+   describe('Tasks component', () => {
     // Setting module for testing
     // Disable old forms
 
@@ -24,9 +24,9 @@ export function main() {
           .compileComponents()
           .then(() => {
             let fixture = TestBed.createComponent(TestComponent);
-            let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
+            let tasksDOMEl = fixture.debugElement.children[0].nativeElement;
 
-	          expect(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Tareas');
+	          expect(tasksDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Tareas');
           });
         }));
     });
@@ -34,6 +34,6 @@ export function main() {
 
 @Component({
   selector: 'test-cmp',
-  template: '<sd-about></sd-about>'
+  template: '<sd-tasks></sd-tasks>'
 })
 class TestComponent {}
