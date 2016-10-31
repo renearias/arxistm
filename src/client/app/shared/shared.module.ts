@@ -8,6 +8,7 @@ import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
 import { SidebarComponent } from './sidebar/index';
 import { NameListService } from './name-list/index';
+import { OAuth2Service } from './oauth2/index';
 import { ChatSidebarComponent, ChatMessageComponent } from './chat-sidebar/index';
 import { NotificationLoad, NotificationsComponent } from './notifications/index';
 import { SearchPipe } from './pipes/index';
@@ -27,7 +28,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [AppConfig, NameListService]
+      providers: [AppConfig, NameListService, OAuth2Service]
     };
   }
 }

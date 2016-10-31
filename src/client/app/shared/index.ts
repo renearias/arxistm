@@ -7,5 +7,6 @@ export * from './sidebar/index';
 export * from './toolbar/index';
 export * from './chat-sidebar/index';
 export * from './config/env.config';
+export * from './oauth2/index';
 export * from './pipes/index';
 export * from './notifications/index';

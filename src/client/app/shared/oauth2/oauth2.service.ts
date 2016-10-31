@@ -25,20 +25,92 @@ declare var Auth0Lock: any;
 
 @Injectable()
 export class OAuth2Service {
-  //lock = new Auth0Lock('YOUR_AUTH0_CLIENT_ID', 'YOUR_AUTH0_DOMAIN');
+  
+    
+  /* public redirectUri = "";
+   public scope = "";
+   public rngUrl = "";
+   public oidc = false;
+   public options: any;
+   public state = "";
+   public issuer = "";
+   public validationHandler: any;
+   public logoutApiUrl = "";*/
+   
+      
   refreshSubscription: any;
   user: Object;
   currentToken: any;
   //zoneImpl: NgZone;
-  loginApiUrl: string = Config.API+'oauth/v2/token';
+  public loginApiUrl: string = Config.API+'oauth/v2/token';
   private loggedIn = false;
 
+  public setStorage(storage: Storage) {
+        this._storage = storage;
+    }
+    
+  private _storage: Storage = localStorage;
+  
   constructor(private router: Router, private http: Http) {
    // this.zoneImpl = zone;
    // this.user = JSON.parse(localStorage.getItem('profile'));
     this.loggedIn = !!localStorage.getItem('id_token');
     this.currentToken = JSON.parse(localStorage.getItem('id_token'));
   }
+  
+ /* callEventIfExists(options: any) {
+        var that = this;
+        if (options.onTokenReceived) {
+            var tokenParams = { 
+                idClaims: that.getIdentityClaims(),
+                idToken: that.getIdToken(),
+                accessToken: that.getAccessToken(),
+                state: that.state
+            };
+            options.onTokenReceived(tokenParams);
+        }
+    }*/
+    
+    getAccessToken() {
+        return this._storage.getItem("access_token");
+    };
+    
+    hasValidAccessToken() {
+        if (this.getAccessToken()) {
+
+            var expiresAt = this._storage.getItem("expires_at");
+            var now = new Date();
+            if (expiresAt && parseInt(expiresAt) < now.getTime()) {
+                return false;
+            }
+
+            return true;
+        }
+
+        return false;
+    };
+    
+    processToken(token: any){
+        //if (savedNonce === nonceInState) {
+            console.log(token);
+            this._storage.setItem("access_token", token["access_token"]);
+            this._storage.setItem("refresh_token", token["refresh_token"]);
+            var expiresIn = token["expires_in"];
+
+            if (expiresIn) {
+                var expiresInMilliSeconds = parseInt(expiresIn) * 1000;
+                var now = new Date();
+                var expiresAt = now.getTime() + expiresInMilliSeconds;
+                this._storage.setItem("expires_at", "" + expiresAt);
+            }
+            /*if (stateParts.length > 1) {
+                this.state = stateParts[1];
+            }*/
+
+            //oauthSuccess = true;
+
+                        //}
+    }
 
   /*public authenticated() {
     // Check if there's an unexpired JWT
@@ -61,9 +133,15 @@ export class OAuth2Service {
       return this.http.post(this.loginApiUrl,bodyRequest)
                     .toPromise()   
                     .then((res: Response) => {
+                        console.log(this);
                         this.currentToken = res.json();
                         this.loggedIn = true;
-                        localStorage.setItem('id_token', JSON.stringify(this.currentToken));
+                        this._storage.setItem('token', JSON.stringify(this.currentToken));
+                        this.processToken(this.currentToken);
+                        
+                        
+                        
+                        
                     })
                     .catch(this.handleLoginError);
   }
@@ -82,7 +160,8 @@ export class OAuth2Service {
                     .then((res: Response) => {
                         this.currentToken = res.json();
                         this.loggedIn = true;
-                        localStorage.setItem('id_token', JSON.stringify(this.currentToken));
+                        this._storage.setItem('token', JSON.stringify(this.currentToken));
+                        this.processToken(this.currentToken);
                     })
                     .catch(this.handleLoginError);
   }
@@ -90,7 +169,7 @@ export class OAuth2Service {
   public logout() {
     localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('access_token');
     //this.zoneImpl.run(() => this.user = null);
     this.router.navigate(['login']);
   }

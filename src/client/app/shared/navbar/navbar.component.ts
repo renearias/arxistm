@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, ElementRef, Output } from '@angular/co
 
 import { TooltipModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { AppConfig } from '../config/app.config';
+import { OAuth2Service } from '../oauth2/index';
 
 declare var jQuery: any;
 
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit {
   $el: any;
   config: any;
 
-  constructor(el: ElementRef, config: AppConfig) {
+  constructor(el: ElementRef, config: AppConfig, private oAuth2: OAuth2Service) {
     this.$el = jQuery(el.nativeElement);
     this.config = config.getConfig();
   }
@@ -29,7 +30,9 @@ export class NavbarComponent implements OnInit {
   toggleChat(): void {
     this.toggleChatEvent.emit(null);
   }
-
+  logout(): void {
+      this.oAuth2.logout();
+  }  
   ngOnInit(): void {
     setTimeout(() => {
       let $chatNotification = jQuery('#chat-notification');
