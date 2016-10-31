@@ -9,7 +9,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 
+import { LoginModule } from './login/login.module';
 import { AboutModule } from './about/about.module';
+import { TasksModule } from './tasks/tasks.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -23,9 +25,9 @@ export const firebaseConfig = {
 };
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes),
+  imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes), 
                      AngularFireModule.initializeApp(firebaseConfig),
-                      AboutModule, HomeModule, SharedModule.forRoot()],
+                      LoginModule, AboutModule, TasksModule, HomeModule, SharedModule.forRoot()],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
