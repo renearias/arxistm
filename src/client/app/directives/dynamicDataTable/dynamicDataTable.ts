@@ -48,15 +48,15 @@ export class DynamicDataTable {
         // Setup - add a text input to each footer cell
         
        this._items.subscribe((data: any)=>{
-           if (this.$datatable!==undefined){
-               this.$datatable.destroy();
+           if (this.$dataTable!==undefined){
+               this.$dataTable.destroy();
            }
             this.renderizeDataTable(data);
-          })   
+          })  
     }
     
-    renderizeDataTable(data): void {
-         this.$datatable = this.$el.DataTable(
+    renderizeDataTable(data: any): void {
+         this.$dataTable = this.$el.DataTable(
                 {
                     'order': [[ 0, 'asc' ]],
                     /*'dom': "<'row'<'col-sm-2'l><'col-sm-4 col-xs-12'B><'col-sm-6 col-xs-12'f>>" +
@@ -70,7 +70,7 @@ export class DynamicDataTable {
                     ],*/
                     'language': DataTableLangEsES,
                     'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, 'Todos']],
-                    //'processing': true,
+                    'processing': true,
                     //'serverSide': true,
                     //'responsive': true,
                     'data': data,
