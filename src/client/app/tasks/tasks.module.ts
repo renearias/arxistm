@@ -4,8 +4,9 @@ import { TasksComponent } from './tasks.component';
 import { TasksService } from './tasks.service';
 
 @NgModule({
-    imports: [CommonModule, TasksService],
+    imports: [CommonModule],
     declarations: [TasksComponent],
+    providers: [TasksService],
     exports: [TasksComponent]
 })
 
