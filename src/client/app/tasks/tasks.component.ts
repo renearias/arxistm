@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CrudIndexInterface } from '../components/crud/crud-index-interface';
 import { TasksService } from './tasks.service';
+import { Task } from './task.entity';
 
 
 /**
@@ -18,6 +19,13 @@ export class TasksComponent {
     }
     
     accion(){
-        this.tasks.getAll();
+        let task= new Task();
+        task.tarea='hacer algo';
+        task.descripcion='descibe algo';
+        task.isurgent= true;
+        task.timeEstimate=12;
+        task.priority=1;
+        task.assignedto=1;
+        this.tasks.create(task);
     }
 }

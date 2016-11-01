@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
-/*import {Ingreso} from './ingreso';
-import {AuthHttp} from 'angular2-jwt';
-import {urlApi} from  '../http/http';
-import {EntityServiceInterface} from '../services/entity-service-interface';*/
+import {Http} from '@angular/http';
+/*import {Ingreso} from './ingreso';*/
+
+/*import {EntityServiceInterface} from '../services/entity-service-interface';*/
 import {EntityService} from '../components/crud/entity-service';
-/*import {IngresoRESTClient} from './ingreso-rest.client';*/
 
 @Injectable()
-export class TasksService extends EntityService/* implements EntityServiceInterface*/{
+export class TasksService extends EntityService {
     
-  /*constructor(private ingresoRESTClient: IngresoRESTClient){
-      super(ingresoRESTClient);
-  }*/
+  routeREST: string = 'tareas';
+   
+  constructor(http: Http){
+    super(http);
+  } 
 }
