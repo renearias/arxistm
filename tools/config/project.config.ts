@@ -22,6 +22,7 @@ export class ProjectConfig extends SeedConfig {
       ...this.NPM_DEPENDENCIES,
       {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       {src: 'tether/dist/js/tether.min.js', inject: 'libs'},
+      {src: 'moment/min/moment-with-locales.min.js', inject: 'libs'},
       {src: 'bootstrap/dist/js/bootstrap.min.js', inject: 'libs'},
       {src: 'jquery-slimscroll/jquery.slimscroll.min.js', inject: 'libs'},
       {src: 'hammerjs/hammer.min.js', inject: 'libs'},
