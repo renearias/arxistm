@@ -23,8 +23,8 @@ export abstract class EntityService implements EntityServiceInterface{
             },this.handleError);
     
   }
-  results() {
-      console.log(`${this.getRouteREST()}/results`);
+  getUrlApiResults(){
+      return `${this.getRouteREST()}/results`
   }
   get(id: number | string) {
     //return this.entityRESTClient.getOneById(id);
