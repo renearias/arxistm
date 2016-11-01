@@ -8,6 +8,10 @@
 <ul>
   <li *ngFor="let name of names">{{name}}</li>
 </ul>
-<span>{{(item | async)?.$value}}</span>
-<span>{{(item | async)?.$value + 1}}</span>
-<span>{{resultado()}}</span>
+<span ></span>
+
+
+<table class="table table-striped" dynamicDataTable [columns]="columns" [items]="items" width="100%">
+    
+       
+</table>

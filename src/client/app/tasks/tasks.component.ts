@@ -13,11 +13,11 @@ import { TasksService } from './tasks.service';
   styleUrls: ['tasks.component.css']
 })
 export class TasksComponent { 
-    contructor(private tasks: TasksService){
+    constructor(private tasks: TasksService){
         console.log(tasks);
     }
     
     accion(){
-        console.log("accion");
+        this.tasks.getAll();
     }
 }
