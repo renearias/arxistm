@@ -11,7 +11,7 @@ declare var jQuery: any;
 export class DynamicDataTable {
     $el: any;
     private $dataTable: any;
-    _urlApi: string = '';
+    _urlApiResults: string = '';
     _routeActions: string = '';
     private _columns: any = [];
     private _items: any;
@@ -28,15 +28,15 @@ export class DynamicDataTable {
    @Input() set columns(columns: Array<any>){
        this._columns = columns || this._columns;
         }
-   @Input() set items(items: Array<any> | FirebaseListObservable<any>){
+   /*@Input() set items(items: Array<any> | FirebaseListObservable<any>){
        this._items = items || this._items;
-        }    
+        }  */  
    /*@Input() set footerCallback(footer: any){
           this._footerCallback = footer || this._footerCallback;
-        }
-   @Input() set urlApi(urlApi: string){
-          this._urlApi = urlApi || this._urlApi;
         }*/
+   @Input() set urlApiResults(urlApiResults: string){
+          this._urlApiResults = urlApiResults || this._urlApiResults;
+        }
    ngOnInit(): void {
         //this._columns.push(columnAction(this._routeActions));
         //var routerI = this.router;
@@ -47,15 +47,16 @@ export class DynamicDataTable {
         
         // Setup - add a text input to each footer cell
         
-       this._items.subscribe((data: any)=>{
+       /*this._items.subscribe((data: any)=>{
            if (this.$dataTable!==undefined){
                this.$dataTable.destroy();
            }
             this.renderizeDataTable(data);
-          })  
+          })*/
+        this.renderizeDataTable();     
     }
     
-    renderizeDataTable(data: any): void {
+    renderizeDataTable(data?: any): void {
          this.$dataTable = this.$el.DataTable(
                 {
                     'order': [[ 0, 'asc' ]],
@@ -71,22 +72,22 @@ export class DynamicDataTable {
                     'language': DataTableLangEsES,
                     'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, 'Todos']],
                     'processing': true,
-                    //'serverSide': true,
+                    'serverSide': true,
                     //'responsive': true,
                     'data': data,
                     'columns': this._columns,
                      //fixedColumns:   true,
                    // 'footerCallback': this._footerCallback,
-                    /*'ajax': {
-                        'url': this._urlApi,
+                    'ajax': {
+                        'url': this._urlApiResults,
                         'type': 'GET',
-                        'beforeSend': function (request){
+                        'beforeSend': function (request: any){
                             request.setRequestHeader('Accept', 'application/json');
-                            var token = localStorage.getItem('id_token');
-                            request.setRequestHeader('Authorization', 'Bearer ' + token);
+                            let access_token = localStorage.getItem('access_token');
+                            request.setRequestHeader('Authorization', 'Bearer ' + access_token);
                         }
 
-                    }*/
+                    }
                 })
                /* .on('draw.dt', function (e, datatable, row){
                         let tableActions = jQuery('.wraper-actions a');
