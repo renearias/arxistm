@@ -13,29 +13,25 @@ export const contentHeaders = new Headers();
 contentHeaders.append('Content-Type', 'application/json');
 contentHeaders.append('Accept', 'application/json');
 
-/*export const contentHeadersWithToken = new Headers();
-contentHeadersWithToken.append('Authorization', 'Bearer ' + token);
-contentHeadersWithToken.append('Content-Type', 'application/json');*/
+export const contentHeadersWithToken = new Headers({ 'Content-Type': 'application/json' });
+contentHeadersWithToken.append('Authorization', 'Bearer ' + localStorage.getItem('access_token'));
+//contentHeadersWithToken.append('Content-Type', 'application/json');
+export const requestDefaultOptions = new RequestOptions({ headers: contentHeadersWithToken });
 
-
-//import {urlApi, contentHeaders} from '../http/http';
-
-// Avoid name not found warnings
-declare var Auth0Lock: any;
 
 @Injectable()
 export class OAuth2Service {
   
     
-  /* public redirectUri = "";
-   public scope = "";
-   public rngUrl = "";
+  /* public redirectUri = '';
+   public scope = '';
+   public rngUrl = '';
    public oidc = false;
    public options: any;
-   public state = "";
-   public issuer = "";
+   public state = '';
+   public issuer = '';
    public validationHandler: any;
-   public logoutApiUrl = "";*/
+   public logoutApiUrl = '';*/
    
       
   refreshSubscription: any;
@@ -72,13 +68,13 @@ export class OAuth2Service {
     }*/
     
     getAccessToken() {
-        return this._storage.getItem("access_token");
+        return this._storage.getItem('access_token');
     };
     
     hasValidAccessToken() {
         if (this.getAccessToken()) {
 
-            var expiresAt = this._storage.getItem("expires_at");
+            var expiresAt = this._storage.getItem('expires_at');
             var now = new Date();
             if (expiresAt && parseInt(expiresAt) < now.getTime()) {
                 return false;
@@ -92,16 +88,15 @@ export class OAuth2Service {
     
     processToken(token: any){
         //if (savedNonce === nonceInState) {
-            console.log(token);
-            this._storage.setItem("access_token", token["access_token"]);
-            this._storage.setItem("refresh_token", token["refresh_token"]);
-            var expiresIn = token["expires_in"];
+            this._storage.setItem('access_token', token['access_token']);
+            this._storage.setItem('refresh_token', token['refresh_token']);
+            var expiresIn = token['expires_in'];
 
             if (expiresIn) {
                 var expiresInMilliSeconds = parseInt(expiresIn) * 1000;
                 var now = new Date();
                 var expiresAt = now.getTime() + expiresInMilliSeconds;
-                this._storage.setItem("expires_at", "" + expiresAt);
+                this._storage.setItem('expires_at', '' + expiresAt);
             }
             /*if (stateParts.length > 1) {
                 this.state = stateParts[1];
@@ -133,7 +128,6 @@ export class OAuth2Service {
       return this.http.post(this.loginApiUrl,bodyRequest)
                     .toPromise()   
                     .then((res: Response) => {
-                        console.log(this);
                         this.currentToken = res.json();
                         this.loggedIn = true;
                         this._storage.setItem('token', JSON.stringify(this.currentToken));
