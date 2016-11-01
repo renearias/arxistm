@@ -8,6 +8,7 @@ import {Response} from '@angular/http';
 
 export interface EntityServiceInterface {
   
+  routeREST: string;
   getAll(id: number | string): any;
   get(id: number | string): any;
   //create(entity: EntityInterface): any;
