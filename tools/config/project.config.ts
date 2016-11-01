@@ -29,7 +29,17 @@ export class ProjectConfig extends SeedConfig {
       {src: 'datatables.net/js/jquery.dataTables.js', inject: 'libs'},
       {src: 'datatables.net-bs/js/dataTables.bootstrap.js', inject: 'libs'},
       {src: 'datatables.net-bs/css/dataTables.bootstrap.css', inject: true},
-
+      {src: 'datatables.net-buttons/js/dataTables.buttons.js', inject: 'libs'},
+      {src: 'datatables.net-buttons/js/buttons.colVis.js', inject: 'libs'},
+      {src: 'datatables.net-buttons/js/buttons.flash.js', inject: 'libs'},
+      {src: 'datatables.net-buttons/js/buttons.html5.js', inject: 'libs'},
+      {src: 'datatables.net-buttons/js/buttons.print.js', inject: 'libs'},
+      {src: 'datatables.net-buttons-bs/js/buttons.bootstrap.js', inject: 'libs'},
+      {src: 'datatables.net-buttons-bs/css/buttons.bootstrap.css', inject: true},
+      {src: 'datatables.net-responsive/js/dataTables.responsive', inject: 'libs'},
+      {src: 'datatables.net-responsive-bs/js/responsive.bootstrap.js', inject: 'libs'},
+      {src: 'datatables.net-responsive-bs/css/responsive.bootstrap.css', inject: true},
+      // 
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
     ];
 
