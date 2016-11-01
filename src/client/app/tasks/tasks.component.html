@@ -2,5 +2,8 @@
 
 <h2>Tareas</h2>
 
+<table class="table table-striped" dynamicDataTable [columns]="columns" [urlApiResults]="tasks.getUrlApiResults()" width="100%">
 
+</table>
+       
 <button (click)="accion()">accion</button>

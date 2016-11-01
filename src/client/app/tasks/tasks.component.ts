@@ -14,8 +14,10 @@ import { Task } from './task.entity';
   styleUrls: ['tasks.component.css']
 })
 export class TasksComponent { 
+    columns: any = [
+                        {  title:'Tarea' ,data: 'tarea' }
+                    ];
     constructor(private tasks: TasksService){
-        console.log(tasks);
     }
     
     accion(){
@@ -26,6 +28,7 @@ export class TasksComponent {
         task.timeEstimate=12;
         task.priority=1;
         task.assignedto=1;
-        this.tasks.create(task);
+        console.log(this.columns, this.tasks.getUrlApiResults());
+        //this.tasks.create(task);
     }
 }
