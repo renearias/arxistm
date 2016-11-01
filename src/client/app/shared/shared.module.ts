@@ -13,6 +13,7 @@ import { ChatSidebarComponent, ChatMessageComponent } from './chat-sidebar/index
 import { NotificationLoad, NotificationsComponent } from './notifications/index';
 import { SearchPipe } from './pipes/index';
 import { AppConfig } from './config/app.config';
+import { DynamicDataTable } from '../directives/index'
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -20,9 +21,9 @@ import { AppConfig } from './config/app.config';
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, TooltipModule],
-  declarations: [ToolbarComponent, NavbarComponent, SidebarComponent, ChatSidebarComponent, SearchPipe, NotificationLoad, NotificationsComponent, ChatMessageComponent],
+  declarations: [ToolbarComponent, NavbarComponent, SidebarComponent, ChatSidebarComponent, SearchPipe, NotificationLoad, NotificationsComponent, ChatMessageComponent, DynamicDataTable],
   exports: [ToolbarComponent, NavbarComponent, SidebarComponent, ChatSidebarComponent, ChatMessageComponent,
-    CommonModule, FormsModule, RouterModule, TooltipModule]
+    CommonModule, FormsModule, RouterModule, TooltipModule, DynamicDataTable]
 })
 export class SharedModule {
   static forRoot(): ModuleWithProviders {
