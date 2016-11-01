@@ -60,20 +60,17 @@ export class DynamicDataTable {
          this.$dataTable = this.$el.DataTable(
                 {
                     'order': [[ 0, 'asc' ]],
-                    /*'dom': "<'row'<'col-sm-2'l><'col-sm-4 col-xs-12'B><'col-sm-6 col-xs-12'f>>" +
-                         "<'row'<'col-sm-12'tr>>" +
-                         "<'row'<'col-sm-5'i><'col-sm-7'p>>",*/
-                    'dom': "<'row'<'col-sm-2'l><'col-sm-4 col-xs-12'><'col-sm-6 col-xs-12'f>>" +
+                    'dom': "<'row'<'col-sm-2'l><'col-sm-4 col-xs-12'B><'col-sm-6 col-xs-12'f>>" +
                          "<'row'<'col-sm-12'tr>>" +
                          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-                   /* 'buttons': [
-                        'copy', 'excel', 'pdf'
-                    ],*/
+                    'buttons': [
+                        'copy', 'excel', 'pdf', 'print'
+                    ],
                     'language': DataTableLangEsES,
                     'lengthMenu': [[10, 25, 50, -1], [10, 25, 50, 'Todos']],
                     'processing': true,
                     'serverSide': true,
-                    //'responsive': true,
+                    'responsive': true,
                     'data': data,
                     'columns': this._columns,
                      //fixedColumns:   true,

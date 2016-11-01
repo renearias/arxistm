@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CrudIndexInterface } from '../components/crud/crud-index-interface';
 import { TasksService } from './tasks.service';
 import { Task } from './task.entity';
+import { columnDateTime } from '../directives/dynamicDataTable/index'
 
 
 /**
@@ -15,7 +16,8 @@ import { Task } from './task.entity';
 })
 export class TasksComponent { 
     columns: any = [
-                        {  title:'Tarea' ,data: 'tarea' }
+                        {  title:'Tarea' ,data: 'tarea' },
+                        columnDateTime('Creado','created')
                     ];
     constructor(private tasks: TasksService){
     }
