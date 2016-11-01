@@ -13,7 +13,6 @@
      public cargo: string;
      public plainPassword: any;
      public file: any;
-     public name: string;
      
      constructor(){
          
