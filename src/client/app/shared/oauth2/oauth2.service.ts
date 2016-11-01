@@ -164,6 +164,9 @@ export class OAuth2Service {
     localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
     localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('expires_at');
+    localStorage.removeItem('token');
     //this.zoneImpl.run(() => this.user = null);
     this.router.navigate(['login']);
   }
