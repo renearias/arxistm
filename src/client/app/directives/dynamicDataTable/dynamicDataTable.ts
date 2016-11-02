@@ -57,6 +57,8 @@ export class DynamicDataTable {
     }
     
     renderizeDataTable(data?: any): void {
+                 
+                        
          this.$dataTable = this.$el.DataTable(
                 {
                     'order': [[ 0, 'asc' ]],
@@ -71,7 +73,7 @@ export class DynamicDataTable {
                     'processing': true,
                     'serverSide': true,
                     'responsive': true,
-                    'data': data,
+                   // 'data': data,
                     'columns': this._columns,
                      //fixedColumns:   true,
                    // 'footerCallback': this._footerCallback,
@@ -104,29 +106,61 @@ export class DynamicDataTable {
                                     }
                                 });*/
                                 
-         /* var oTableHeader=this.$el.find('thead');
-          var searchLine=oTableHeader.append('<tr role="row"></tr>');
-          var columnas = this._columns;*/
-         /* this.$el.find('thead th').each( function (i) {
+                
+                                              
+                    var oTable=this.$dataTable;
+                    
+                    var oTableHeader=this.$el.find('thead');
+                    var searchLine=jQuery('<tr role="row"></tr>').appendTo(oTableHeader);
+                    this._columns.forEach( function (column, i, columnas) {
                            
-                           
-                           //var title = columnas[i]['title'];
-                           var title = $(this).text();
                            if (columnas[i]['searchable']!==false)
                            {
-                            searchLine.append('<th><input type="text" placeholder="'+title+'" style="width:100%" data-index="'+i+'" /></th>');
+                            jQuery(`<th><input class="individual_filtering" type="text" placeholder="${column.title}" data-filter-property-id="${column.name}:name" style="width:100%" /></th>`).appendTo(searchLine);
                            }else
                            {
-                            searchLine.append('<th></th>');
+                            jQuery('<th></th>').appendTo(searchLine);
                            }
-                        });*/
-          // Filter event handler
-          /*jQuery(this.$datatable.table().container()).on( 'keyup', 'thead input', function () {
-                this.$datatable
-                    .column( $(this).data('index') )
-                    .search( this.value )
-                    .draw();
-            } );*/
+                        });
+                
+                        
+                        
+                 // Apply the search
+                        
+                     var throttledSearch = $.fn.DataTable.util.throttle(
+                    function (event) {
+                        if (event.type == "keyup") {
+                            if (
+                                    event.keyCode == 37 ||
+                                    event.keyCode == 38 ||
+                                    event.keyCode == 39 ||
+                                    event.keyCode == 40 ||
+                                    event.keyCode == 16 ||
+                                    event.keyCode == 17 ||
+                                    event.keyCode == 18
+                            )
+                                return;
+                        }
+                        oTable
+                                .column($(event.currentTarget).data('filter-property-id'))
+                                .search(this.value)
+                                .draw();
+                    },
+                    //options.searchDelay
+                ); 
+                    
+                    jQuery(this.$dataTable.table().container()).find("tr input.individual_filtering").on("keyup change",throttledSearch);
+                    
+                    jQuery(this.$dataTable.table().container()).find("tr select.individual_filtering").on("keyup change", function(event) {
+                        var searchFieldId = $(event.currentTarget).data('filter-property-id');
+                        var searchValue = $(this).val();
+                        searchValue = searchValue ? searchValue.toString() : '';
+                        oTable
+                            .column(searchFieldId)
+                            .search(searchValue)
+                            .draw();
+                    }); 
+                    
     }
 }
 /*            columns: [

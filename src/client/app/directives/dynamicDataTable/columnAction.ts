@@ -10,12 +10,12 @@ function render_datetime(data: any, type: any, row: any, meta: any, dateFormat: 
                                             return null;
                                         }
                                     }
-export function columnDateTime(name: any, field: any, dateFormat?: string) {
+export function columnDateTime(title: any, field: any, name?: any, dateFormat?: string) {
     if (typeof(dateFormat) === 'undefined') dateFormat = 'lll';
     return {
-            //'name': name,
+            'name': name,
             'data': field,
-            'title': name,
+            'title': title,
             //'orderable': false,
             'searchable': true,
             'render': function(data: any, type: any, row: any, meta: any) {
