@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { OAuth2Service } from '../shared/index';
 
 declare var FB: any;
+declare var gapi: any;
 
 @Component({
   moduleId: module.id,
@@ -26,6 +27,25 @@ export class LoginComponent {
   constructor(private oAuth2: OAuth2Service, private router: Router) {
         
   }
+  ngOnInit(){
+          gapi.signin2.render('my-signin2', {
+            'scope': 'profile email https://www.googleapis.com/auth/drive',
+            'width': 160,
+           // 'height': 50,
+            'longtitle': true,
+           //'theme': 'dark',
+            'onsuccess': function onSuccess(googleUser) {
+                          console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                          var google_token = googleUser.getAuthResponse().id_token;
+                          console.log(google_token);
+                          
+                        },
+            'onfailure': function onFailure(error) {
+                          console.log(error);
+                        }
+          });
+      
+  }
   login(): any {
       
       return this.oAuth2.tryLoginWithUsernameAndPassword(this.username,this.password)
@@ -38,6 +58,11 @@ export class LoginComponent {
                                });
         
       
+  }
+  googleSuccessLogin(googleUser): any{
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                          var google_token = googleUser.getAuthResponse().id_token;
+                          console.log(google_token);
   }
   facebookLogin(): any {
       console.log("facebook login");
@@ -67,3 +92,10 @@ export class LoginComponent {
       //this.router.navigate(['/']);
   }
 }
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail());
+  }

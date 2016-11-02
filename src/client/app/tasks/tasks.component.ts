@@ -16,8 +16,13 @@ import { columnDateTime } from '../directives/dynamicDataTable/index'
 })
 export class TasksComponent { 
     columns: any = [
-                        {  title:'Tarea' ,data: 'tarea' },
-                        columnDateTime('Creado','created')
+                        {  title:'Id' ,data: 'id', name: 'id' },
+                        {  title:'Tarea' ,data: 'tarea', name: 'tarea' },
+                        columnDateTime('Creado','created','created'),
+                        {  title:'Asignado A' ,data: 'assignedto.name', name: 'assignedto.name' },
+                        {  title:'Descripcion' ,data: 'descripcion', name:'descripcion' },
+                        {  title:'Urgente' ,data: 'isurgent', name:'isurgent' },
+                        {  title:'Estado' ,data: 'state', name:'state' },
                     ];
     constructor(private tasks: TasksService){
     }

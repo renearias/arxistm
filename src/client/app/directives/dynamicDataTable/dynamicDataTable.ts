@@ -112,7 +112,7 @@ export class DynamicDataTable {
                     
                     var oTableHeader=this.$el.find('thead');
                     var searchLine=jQuery('<tr role="row"></tr>').appendTo(oTableHeader);
-                    this._columns.forEach( function (column, i, columnas) {
+                    this._columns.forEach( function (column: any, i:any, columnas: any) {
                            
                            if (columnas[i]['searchable']!==false)
                            {
@@ -127,8 +127,8 @@ export class DynamicDataTable {
                         
                  // Apply the search
                         
-                     var throttledSearch = $.fn.DataTable.util.throttle(
-                    function (event) {
+                     var throttledSearch = jQuery.fn.DataTable.util.throttle(
+                    function (event: any) {
                         if (event.type == "keyup") {
                             if (
                                     event.keyCode == 37 ||
@@ -142,7 +142,7 @@ export class DynamicDataTable {
                                 return;
                         }
                         oTable
-                                .column($(event.currentTarget).data('filter-property-id'))
+                                .column(jQuery(event.currentTarget).data('filter-property-id'))
                                 .search(this.value)
                                 .draw();
                     },
@@ -151,9 +151,9 @@ export class DynamicDataTable {
                     
                     jQuery(this.$dataTable.table().container()).find("tr input.individual_filtering").on("keyup change",throttledSearch);
                     
-                    jQuery(this.$dataTable.table().container()).find("tr select.individual_filtering").on("keyup change", function(event) {
-                        var searchFieldId = $(event.currentTarget).data('filter-property-id');
-                        var searchValue = $(this).val();
+                    jQuery(this.$dataTable.table().container()).find("tr select.individual_filtering").on("keyup change", function(event: any) {
+                        var searchFieldId = jQuery(event.currentTarget).data('filter-property-id');
+                        var searchValue = jQuery(this).val();
                         searchValue = searchValue ? searchValue.toString() : '';
                         oTable
                             .column(searchFieldId)
