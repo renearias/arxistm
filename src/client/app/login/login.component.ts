@@ -4,6 +4,9 @@ import { Config } from '../shared/index';
 import {Http, Headers, Response, RequestOptions} from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { OAuth2Service } from '../shared/index';
+import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
+
+
 
 declare var FB: any;
 declare var gapi: any;
@@ -24,27 +27,24 @@ export class LoginComponent {
   password: string;
   hasError: boolean = false;
   errorMsg: string = '';
-  constructor(private oAuth2: OAuth2Service, private router: Router) {
-        
+  constructor(public af: AngularFire, private oAuth2: OAuth2Service, private router: Router) {
+      
   }
   ngOnInit(){
-          gapi.signin2.render('my-signin2', {
+        /*gapi.signin2.render('my-signin2', {    
             'scope': 'profile email https://www.googleapis.com/auth/drive',
             'width': 160,
            // 'height': 50,
             'longtitle': true,
            //'theme': 'dark',
-            'onsuccess': function onSuccess(googleUser) {
-                          console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-                          var google_token = googleUser.getAuthResponse().id_token;
-                          console.log(google_token);
-                          
-                        },
-            'onfailure': function onFailure(error) {
+            'onsuccess': function(googleUser: any){
+                console.log('asdasdasd');
+            },
+            'onfailure': function onFailure(error: any) {
                           console.log(error);
                         }
-          });
-      
+          });*/
+ 
   }
   login(): any {
       
@@ -59,10 +59,23 @@ export class LoginComponent {
         
       
   }
-  googleSuccessLogin(googleUser): any{
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-                          var google_token = googleUser.getAuthResponse().id_token;
-                          console.log(google_token);
+  googleLogin(): any{
+      this.af.auth.subscribe(auth =>{
+       console.log(auth)
+       this.oAuth2.tryLoginWithGoogle(acces_token)
+                    .then((res: any)=>{
+                        this.router.navigate(['/']);
+                    })
+                    .catch((error: any)=>{
+                                   this.errorMsg = <any>error;
+                                   this.hasError = true;
+                               });
+      });  
+      this.af.auth.login({
+      provider: AuthProviders.Google,
+      method: AuthMethods.Popup,
+      scope: ['https://www.googleapis.com/auth/drive'],
+    });
   }
   facebookLogin(): any {
       console.log("facebook login");
@@ -92,10 +105,4 @@ export class LoginComponent {
       //this.router.navigate(['/']);
   }
 }
-function onSignIn(googleUser) {
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
-  }
+
