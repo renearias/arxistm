@@ -160,6 +160,26 @@ export class OAuth2Service {
                     .catch(this.handleLoginError);
   }
   
+  public tryLoginWithGoogle(googleToken: string) {
+
+        let bodyRequest = {
+          'client_id': Config.OAUTH_CLIENT_ID,
+          'client_secret': Config.OAUTH_CLIENT_SECRET,
+          'grant_type': 'https://google.com/',
+          'facebook_access_token': googleToken
+      };
+      
+      return this.http.post(this.loginApiUrl,bodyRequest)
+                    .toPromise()   
+                    .then((res: Response) => {
+                        this.currentToken = res.json();
+                        this.loggedIn = true;
+                        this._storage.setItem('token', JSON.stringify(this.currentToken));
+                        this.processToken(this.currentToken);
+                    })
+                    .catch(this.handleLoginError);
+  }
+  
   public logout() {
     localStorage.removeItem('profile');
     localStorage.removeItem('id_token');
